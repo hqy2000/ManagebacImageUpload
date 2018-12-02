@@ -1,0 +1,22 @@
+{
+  "name":"Managebac Image Upload",
+  "description":"Rubbish",
+  "version":"1",
+  "manifest_version":2,
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.managebac.cn/*",
+        "https://*.managebac.com/*"
+      ],
+      "js": ["editor.js"]
+    }
+  ],
+  "web_accessible_resources": ["inject.js"],
+  "permissions": [
+    "activeTab",
+    "webNavigation",
+    "https://*.managebac.com/*",
+    "https://*.managebac.cn/*"
+  ]
+}
