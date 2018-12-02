@@ -33,7 +33,7 @@ function inject() {
                 success: (json) => {
                     let image = document.createElement("img")
                     image.src = json.data.url
-                    let editor = document.getElementsByClassName("redactor-in-0")[0] || document.getElementsByClassName("redactor-in-1")[0]
+                    let editor = document.getElementsByClassName("redactor-in")[0]
                     if (editor == null) {
                         console.log("Insert failed.")
                     } else {
