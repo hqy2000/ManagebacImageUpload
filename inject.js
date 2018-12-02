@@ -1,5 +1,5 @@
 function inject() {
-    var editor = document.getElementsByClassName("evidence-journal")[0]
+    var editor = document.getElementsByClassName("evidence-journal")[0] || document.getElementsByClassName("evidence_body")[0]
     if (editor != null && document.getElementById("upload-button") == null) {
         var input = document.createElement('input');
         input.type = "file"
@@ -16,6 +16,10 @@ function inject() {
         $("#upload-button").on('click', (e) => {
             e.preventDefault()
             var file_data = $('#upload-input').prop('files')[0];
+            if (file_data == null) {
+                alert("You must select an image.")
+                return
+            }
             var form_data = new FormData();
             form_data.append('smfile', file_data);
             $.ajax({
@@ -29,8 +33,13 @@ function inject() {
                 success: (json) => {
                     let image = document.createElement("img")
                     image.src = json.data.url
-                    let editor = document.getElementsByClassName("redactor-in-0")[0]
-                    editor.append(image)
+                    let editor = document.getElementsByClassName("redactor-in-0")[0] || document.getElementsByClassName("redactor-in-1")[0]
+                    if (editor == null) {
+                        console.log("Insert failed.")
+                    } else {
+                        editor.append(image)
+                        input.value = ""
+                    }
                 },
                 error: (response) => {
                     alert("Upload failed.")
