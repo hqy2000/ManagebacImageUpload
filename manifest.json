@@ -4,6 +4,12 @@
   "description": "A tool which allows you to upload images to your CAS Journals in Managebac.",
   "version": "1.0.0",
   "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "huqingyang2000@gmail.com",
+      "strict_min_version": "45.0"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
